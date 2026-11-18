@@ -1,21 +1,15 @@
-use std::{path::Path, time::Duration};
-use sqlx::{SqlitePool, sqlite::{SqliteConnectOptions, SqliteJournalMode, SqlitePoolOptions, SqliteSynchronous}};
+use sea_orm::{Database, DatabaseConnection};
+use tauri::Manager;
 
-pub async fn init(path: &Path) -> Result<SqlitePool, sqlx::Error> {
-    let options = SqliteConnectOptions::new()
-        .filename(path)
-        .create_if_missing(true)
-        .journal_mode(SqliteJournalMode::Wal)
-        .synchronous(SqliteSynchronous::Normal)
-        .foreign_keys(true)
-        .busy_timeout(Duration::from_secs(5));
+pub async fn init_db(app: &tauri::AppHandle) -> Result<DatabaseConnection, Box<dyn std::error::Error>> {
+    let app_dir = app.path().app_data_dir().expect("Failed to get app dir");
 
-    let pool = SqlitePoolOptions::new()
-        .max_connections(5)
-        .connect_with(options)
-        .await?;
+    std::fs::create_dir(&app_dir)?;
 
-    sqlx::migrate!("./migrations").run(&pool).await?;
-    
-    Ok(pool)
+    let db_path = app_dir.join("track-me.db");
+    let database_url = format!("sqlite://{}?mode=rwc", db_path.to_str().unwrap());
+
+    let db = Database::connect(&database_url).await?;
+
+    Ok(db)
 }
