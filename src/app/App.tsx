@@ -1,11 +1,12 @@
+import { Workspace } from "@/widgets/workspace";
 import React from "react";
 
 const App: React.FC = () => {
     return (
-        <main className="container">
-            Hi
-        </main>
+        <div className="container">
+            <Workspace />
+        </div>
     );
-}
+};
 
 export default App;

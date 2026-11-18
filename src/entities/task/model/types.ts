@@ -1,0 +1,1 @@
+export type TaskStatus = "IN_PROGRESS" | "COMPLETED" | "POSTPONED";

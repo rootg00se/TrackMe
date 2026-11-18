@@ -1,0 +1,1 @@
+export { DeleteTracker } from './ui/delete-task-tracker.ui';
