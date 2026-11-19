@@ -12,9 +12,12 @@
   "app": {
     "windows": [
       {
-        "title": "track-me",
-        "width": 800,
-        "height": 600
+        "title": "TrackMe",
+        "width": 1280,
+        "height": 800,
+        "fullscreen": true,
+        "resizable": true,
+        "decorations": true
       }
     ],
     "security": {
