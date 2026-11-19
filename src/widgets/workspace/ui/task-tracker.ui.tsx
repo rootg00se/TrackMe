@@ -25,21 +25,15 @@ export const TaskTracker: React.FC<ITaskTrackerProps> = ({ tasks, name, trackerI
                 {tasks?.map((task, index) => (
                     <Task
                         key={index}
-                        statusSlot={
-                            <ChangeTaskStatus
-                                status={"IN_PROGRESS"}
-                                taskId={index.toString()}
-                                trackerId={trackerId}
-                            />
-                        }
+                        statusSlot={<ChangeTaskStatus labels={task.labels.map(label => label.color)}  />}
                         contentSlot={
                             <UpdateTask
-                                taskId={index.toString()}
+                                taskId={index}
                                 trackerId={trackerId}
                                 initialText={task.text}
                             />
                         }
-                        menuSlot={<TaskActions trackerId={trackerId} taskId={index.toString()} />}
+                        menuSlot={<TaskActions trackerId={trackerId} taskId={task.taskId} />}
                         startDate={task.startDate}
                         endDate={task.targetDate}
                     />

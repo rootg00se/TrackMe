@@ -1,27 +1,25 @@
 import React, { useState } from "react";
-
 import { Input } from "@/shared/components/ui";
-
-// import { useUpdateTask } from "../model/useUpdateTask";
+import { useUpdateTask } from "../model/useUpdateTask";
 
 interface IUpdateTaskProps {
 	initialText: string;
-	taskId: string;
-	trackerId: string;
+	taskId: number;
+	trackerId: number;
 }
 
 export const UpdateTask: React.FC<IUpdateTaskProps> = ({ initialText, taskId, trackerId }) => {
 	const [text, setText] = useState(initialText);
 	const [editMode, setEditMode] = useState(false);
 
-	// const { updateFunc } = useUpdateTask(trackerId);
+	const { updateTaskFunc } = useUpdateTask();
 
 	const handleKeyDown = (event: React.KeyboardEvent) => {
 		if (event.key === "Enter") {
-			// updateFunc({
-			// 	taskId,
-			// 	text
-			// });
+			updateTaskFunc({
+				id: taskId,
+				data: { text }
+			});
 
 			setEditMode(false);
 		}

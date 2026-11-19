@@ -22,7 +22,7 @@ export const Task: React.FC<ITaskProps> = ({
         <div className="group bg-card relative rounded-md border p-3">
             <div>
                 <div className="float-right">{menuSlot}</div>
-                <div className="mb-2">{statusSlot}</div>
+                <div>{statusSlot}</div>
                 <p className="text-[14px]">{contentSlot}</p>
             </div>
             {(startDate || endDate) && (

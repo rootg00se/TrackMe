@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
         <QueryClientProvider client={queryClient}>
             <App />
-            <ToastContainer position="bottom-right" />
+            <ToastContainer theme="dark" position="bottom-right" />
         </QueryClientProvider>
     </React.StrictMode>,
 );
