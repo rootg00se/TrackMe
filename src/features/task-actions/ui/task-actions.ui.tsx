@@ -1,9 +1,6 @@
 import React from "react";
+import { Ellipsis, Trash } from "lucide-react";
 
-// import { IconDots } from "@tabler/icons-react";
-import { DotSquare, Ellipsis, Trash } from "lucide-react";
-
-// import { useTrackers } from "@/entities/task-tracker";
 import {
     DropdownMenu,
     DropdownMenuContent,

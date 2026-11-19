@@ -5,10 +5,9 @@ import { useUpdateTask } from "../model/useUpdateTask";
 interface IUpdateTaskProps {
 	initialText: string;
 	taskId: number;
-	trackerId: number;
 }
 
-export const UpdateTask: React.FC<IUpdateTaskProps> = ({ initialText, taskId, trackerId }) => {
+export const UpdateTask: React.FC<IUpdateTaskProps> = ({ initialText, taskId }) => {
 	const [text, setText] = useState(initialText);
 	const [editMode, setEditMode] = useState(false);
 
