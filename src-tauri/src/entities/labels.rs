@@ -12,10 +12,8 @@ pub struct Model {
     pub color: String,
     #[sea_orm(column_type = "Text")]
     pub text: String,
-    #[sea_orm(ignore, column_type = "custom(\"DATETIME\")", select_as = "text")]
-    pub created_at: String,
-    #[sea_orm(ignore, column_type = "custom(\"DATETIME\")", select_as = "text")]
-    pub updated_at: String,
+    pub created_at: DateTime,
+    pub updated_at: DateTime,
     #[sea_orm(has_many, via = "task_labels")]
     pub tasks: HasMany<super::tasks::Entity>,
 }

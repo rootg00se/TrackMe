@@ -10,8 +10,7 @@ pub struct Model {
     pub task_tracker_id: i64,
     #[sea_orm(column_type = "Text")]
     pub name: String,
-    #[sea_orm(ignore, column_type = "custom(\"DATETIME\")", select_as = "text")]
-    pub created_at: String,
+    pub created_at: DateTime,
     #[sea_orm(has_many)]
     pub tasks: HasMany<super::tasks::Entity>,
 }

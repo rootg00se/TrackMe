@@ -1,7 +1,7 @@
 CREATE TABLE task_trackers (
     task_tracker_id INTEGER PRIMARY KEY AUTOINCREMENT,
     name            TEXT NOT NULL CHECK (length(name) <= 64),
-    created_at      DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    created_at      datetime_text NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE tasks (
@@ -10,10 +10,10 @@ CREATE TABLE tasks (
         CHECK (status IN ('IN_PROGRESS', 'COMPLETED', 'POSTPONED')),
     task_tracker_id INTEGER NOT NULL,
     text            TEXT NOT NULL,
-    created_at      DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at      DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    start_date      DATETIME,
-    target_date     DATETIME,
+    created_at      datetime_text NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at      datetime_text NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    start_date      datetime_text,
+    target_date     datetime_text,
 
     CONSTRAINT fk_tasks_task_trackers_task_tracker_id
         FOREIGN KEY (task_tracker_id) REFERENCES task_trackers (task_tracker_id)
@@ -24,8 +24,8 @@ CREATE TABLE labels (
     label_id   INTEGER PRIMARY KEY AUTOINCREMENT,
     color      TEXT NOT NULL CHECK (length(color) <= 9),
     text       TEXT NOT NULL CHECK (length(text) <= 64),
-    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    created_at datetime_text NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at datetime_text NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE task_labels (

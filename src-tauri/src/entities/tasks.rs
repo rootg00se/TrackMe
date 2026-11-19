@@ -13,24 +13,10 @@ pub struct Model {
     pub task_tracker_id: i64,
     #[sea_orm(column_type = "Text")]
     pub text: String,
-    #[sea_orm(ignore, column_type = "custom(\"DATETIME\")", select_as = "text")]
-    pub created_at: String,
-    #[sea_orm(ignore, column_type = "custom(\"DATETIME\")", select_as = "text")]
-    pub updated_at: String,
-    #[sea_orm(
-        ignore,
-        column_type = "custom(\"DATETIME\")",
-        select_as = "text",
-        nullable
-    )]
-    pub start_date: Option<String>,
-    #[sea_orm(
-        ignore,
-        column_type = "custom(\"DATETIME\")",
-        select_as = "text",
-        nullable
-    )]
-    pub target_date: Option<String>,
+    pub created_at: DateTime,
+    pub updated_at: DateTime,
+    pub start_date: Option<DateTime>,
+    pub target_date: Option<DateTime>,
     #[sea_orm(
         belongs_to,
         from = "task_tracker_id",
