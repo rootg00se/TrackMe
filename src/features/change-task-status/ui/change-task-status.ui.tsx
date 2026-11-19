@@ -25,6 +25,9 @@ export const ChangeTaskStatus: React.FC<IChangeTaskStatusProps> = ({ status, tas
 	// const { updateStatusFunc } = useUpdateStatus(trackerId);
 	const tags = getRandomTags(1, 4);
 
+	console.log(tags);
+	
+
 	const handleUpdateStatus = (status: TaskStatus) => {
 		// updateStatusFunc({
 		// 	taskId,

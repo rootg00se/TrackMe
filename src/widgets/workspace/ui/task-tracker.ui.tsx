@@ -25,7 +25,7 @@ export const TaskTracker: React.FC<ITaskTrackerProps> = ({ name, trackerId }) =>
                 <DeleteTracker trackerId={trackerId} />
             </div>
             <div className="mb-2 flex flex-col gap-2">
-                {[1, 2, 3, 4, 5]?.map((_, index) => (
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]?.map((_, index) => (
                     <Task
                         key={index}
                         statusSlot={

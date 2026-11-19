@@ -1,6 +1,7 @@
 use tauri::Manager;
 
 mod db;
+mod entities;
 
 #[tauri::command]
 fn greet(name: &str) -> String {
@@ -11,12 +12,8 @@ fn greet(name: &str) -> String {
 pub fn run() {
     tauri::Builder::default()
         .setup(|app| {
-            let handle = app.handle().clone();
-
-            tauri::async_runtime::spawn(async move {
-                let db = db::init_db(&handle).await.expect("Database init failed");
-                handle.manage(db);
-            });
+            let db = tauri::async_runtime::block_on(db::init_db(app.handle()))?;
+            app.manage(db);
 
             Ok(())
         })

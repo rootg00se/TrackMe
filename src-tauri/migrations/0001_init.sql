@@ -40,7 +40,6 @@ CREATE TABLE task_labels (
 ) WITHOUT ROWID;
 
 CREATE INDEX idx_tasks_task_tracker_id    ON tasks (task_tracker_id);
-CREATE INDEX idx_tasks_assignee_id        ON tasks (assignee_id);
 CREATE INDEX idx_task_labels_label_id     ON task_labels (label_id);
 
 CREATE TRIGGER trg_labels_updated_at
