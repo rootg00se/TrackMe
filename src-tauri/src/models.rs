@@ -119,7 +119,6 @@ pub struct CreateTask {
 pub struct UpdateTask {
     pub text: Option<String>,
     pub status: Option<String>,
-    pub assignee_id: Option<i64>,
     pub start_date: Option<DateTime<Utc>>,
     pub target_date: Option<DateTime<Utc>>,
 }

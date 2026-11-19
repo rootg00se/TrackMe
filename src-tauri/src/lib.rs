@@ -4,6 +4,7 @@ mod db;
 mod entities;
 mod repo;
 mod models;
+mod error;
 
 #[tauri::command]
 fn greet(name: &str) -> String {
