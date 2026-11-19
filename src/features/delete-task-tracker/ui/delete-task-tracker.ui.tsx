@@ -1,27 +1,39 @@
-import { Ellipsis, Plus } from "lucide-react";
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "@/shared/components/ui";
+import { Trash } from "lucide-react";
 import React from "react";
+import { useDeleteTracker } from "../model/useDeleteTracker";
 
-export const DeleteTracker: React.FC<{ trackerId: string }> = ({ trackerId }) => {
-    // const { deleteFunc } = useDeleteTracker(projectId);
+export const DeleteTracker: React.FC<{ trackerId: number }> = ({ trackerId }) => {
+    const { deleteTrackerFunc } = useDeleteTracker();
 
     const handleDeleteTracker = () => {
-        // deleteFunc({ trackerId });
+        deleteTrackerFunc({ id: trackerId });
     };
 
     return (
         <div className="flex items-center gap-2 text-muted-foreground">
-            <Ellipsis size={16} />
-            <Plus size={16} />
-{/* 			<AlertDialog>
-                <AlertDialogTrigger asChild className="cursor-pointer">
-                    <Trash size={20} className="text-primary" />
+            <AlertDialog>
+                <AlertDialogTrigger className="cursor-pointer">
+                    <Trash size={16} />
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                     <AlertDialogHeader>
-                        <AlertDialogTitle>Вы точно уверены, что хотите удалить трекер?</AlertDialogTitle>
+                        <AlertDialogTitle>
+                            Вы точно уверены, что хотите удалить трекер?
+                        </AlertDialogTitle>
                         <AlertDialogDescription>
-                            Это действие не может быть отменена. Нажав кнопку "Удалить" вы безвозвратно удалить этот
-                            трекер и все связанные с ним данные.
+                            Это действие не может быть отменена. Нажав кнопку "Удалить" вы
+                            безвозвратно удалить этот трекер и все связанные с ним данные.
                         </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
@@ -29,7 +41,7 @@ export const DeleteTracker: React.FC<{ trackerId: string }> = ({ trackerId }) =>
                         <AlertDialogAction onClick={handleDeleteTracker}>Удалить</AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>
-            </AlertDialog> */}
+            </AlertDialog>
         </div>
     );
 };

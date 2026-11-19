@@ -2,14 +2,13 @@ import { Button, Input } from "@/shared/components/ui";
 import { cn } from "cn";
 import { Plus, X } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
+import { useCreateTracker } from "../model/useCreateTracker";
 
 export const CreateTaskTracker: React.FC = () => {
-    // const { id: projectId } = useParams();
-
     const [createMode, setCreateMode] = useState(false);
     const [name, setName] = useState("");
 
-    // const { createTrackerFunc, isCreateTrackerPending } = useCreateTracker();
+    const { createTrackerFunc, isCreateTrackerPending } = useCreateTracker();
 
     const inputRef = useRef<HTMLInputElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
@@ -25,12 +24,7 @@ export const CreateTaskTracker: React.FC = () => {
     };
 
     const handleCreateTracker = () => {
-        // if (!projectId) return toast.error("Что-то пошло не так");
-
-        // createTrackerFunc({
-        //     projectId,
-        //     name
-        // });
+        createTrackerFunc({ name });
 
         inputRef.current?.focus();
 
@@ -63,7 +57,7 @@ export const CreateTaskTracker: React.FC = () => {
                         onKeyDown={handleKeyDown}
                     />
                     <div className="flex items-center gap-3">
-                        <Button disabled={false} onClick={handleCreateTracker}>
+                        <Button disabled={isCreateTrackerPending} onClick={handleCreateTracker}>
                             Создать
                         </Button>
                         <X onClick={() => setCreateMode(false)} />

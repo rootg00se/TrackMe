@@ -47,7 +47,7 @@ export const TaskActions: React.FC<ITaskActionsProps> = ({ trackerId, taskId }) 
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger className="cursor-pointer outline-0!">
-				<DotSquare size={20} />
+				<DotSquare size={16} />
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className="mt-4 w-full min-w-40">
 				<DropdownMenuSub>

@@ -1,22 +1,23 @@
 import { Input } from "@/shared/components/ui";
 import React, { useState } from "react";
+import { useUpdateTracker } from "../model/useUpdateTracker";
 
 interface IUpdateTrackerProps {
     name: string;
-    trackerId: string;
+    trackerId: number;
 }
 
 export const UpdateTracker: React.FC<IUpdateTrackerProps> = ({ name, trackerId }) => {
     const [editMode, setEditMode] = useState(false);
     const [newName, setNewName] = useState(name);
 
-    // const { updateFunc } = useUpdateTracker(projectId);
+    const { updateTrackerFunc } = useUpdateTracker();
 
     const handleUpdateTracker = () => {
-        // updateFunc({
-        //     trackerId,
-        //     name: newName
-        // });
+        updateTrackerFunc({
+            id: trackerId,
+            name: newName
+        });
 
         setEditMode(false);
     };
